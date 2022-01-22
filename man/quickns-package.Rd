@@ -14,6 +14,9 @@ This package provides a faster natural cubic spline basis function, \code{\link{
 \references{
 R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 }
+\seealso{
+\code{\link[splines]{ns}}
+}
 \author{
 Weidong Wang, \email{wang@umass.edu}
 }
