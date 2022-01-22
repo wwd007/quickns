@@ -52,10 +52,13 @@ BEGIN_RCPP
 END_RCPP
 }
 
+RcppExport SEXP spline_basis(SEXP, SEXP, SEXP, SEXP);
+
 static const R_CallMethodDef CallEntries[] = {
     {"_quickns_make_design2", (DL_FUNC) &_quickns_make_design2, 4},
     {"_quickns_make_design_no_intcpt_cpp", (DL_FUNC) &_quickns_make_design_no_intcpt_cpp, 4},
     {"_quickns_get_basis", (DL_FUNC) &_quickns_get_basis, 2},
+    {"spline_basis", (DL_FUNC) &spline_basis, 4},
     {NULL, NULL, 0}
 };
 

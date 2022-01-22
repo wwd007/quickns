@@ -8,19 +8,19 @@
 #' @seealso \code{\link[splines]{ns}} for more details.
 #' @author Weidong Wang, \email{wang@umass.edu}
 #' @references R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
-#' 
+#' @useDynLib quickns spline_basis
 #' @export
 quick_ns <- function (x, df = NULL, knots = NULL, intercept = FALSE, 
                       Boundary.knots = range(x, na.rm = TRUE)) 
 {
   splineDesign2 <- function (knots, x, ord = 4L, derivs = 0L) {
-    C_spline_basis <- utils::getFromNamespace("C_spline_basis", "splines")
-    temp <- .Call(C_spline_basis, knots, ord, x, derivs)
+    #C_spline_basis <- utils::getFromNamespace("C_spline_basis", "splines")
+    temp <- .Call(spline_basis, knots, ord, x, derivs)
     make_design2(nx = length(x), ncoef = length(knots) - ord, ord, temp)
   }
   splineDesign_no_intcpt <- function (knots, x, ord = 4L, derivs = 0L) { 
-    C_spline_basis <- utils::getFromNamespace("C_spline_basis", "splines")
-    temp <- .Call(C_spline_basis, knots, ord, x, derivs)
+    #C_spline_basis <- utils::getFromNamespace("C_spline_basis", "splines")
+    temp <- .Call(spline_basis, knots, ord, x, derivs)
     make_design_no_intcpt_cpp(nx = length(x), ncoef = length(knots) - ord,
                               ord = ord, temp)
   }
